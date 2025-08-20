@@ -9,9 +9,6 @@ def file_name_check(file_name):
     - The substring before the dot should not be empty, and it starts with a letter from 
     the latin alphapet ('a'-'z' and 'A'-'Z').
     - The substring after the dot should be one of these: ['txt', 'exe', 'dll']
-    Examples:
-    file_name_check("example.txt") # => 'Yes'
-    file_name_check("1example.dll") # => 'No' (the name should start with a latin alphapet letter)
     """
     suf = ['txt', 'exe', 'dll']
     lst = file_name.split(sep='.')

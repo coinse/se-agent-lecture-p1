@@ -10,7 +10,8 @@ from mcp.server.fastmcp import FastMCP
 
 mcp = FastMCP("pytest-automator")
 
-PYTHON_PATH = ".../venv/bin/python" # Update this path to your Python interpreter (absolute path)
+PYTHON_PATH = "<project_path>/venv/bin/python" # Update this path to your Python interpreter (absolute path)
+TARGET_DIR = "<project_path>/targets"
 
 os.environ["COVERAGE_FILE"] = os.path.join(os.path.dirname(__file__), ".coverage")
 os.environ["PYNGUIN_DANGER_AWARE"] = "1"
@@ -18,19 +19,9 @@ os.environ["PYNGUIN_DANGER_AWARE"] = "1"
 @mcp.tool()
 def list_files() -> str:
     """
-    List all Python files in the target directory to generate tests for.
+    List all Python files in the target directory (TARGET_DIR) to generate tests for.
     """
-    target_dir = os.path.join(os.path.dirname(__file__), "target_programs", "human-eval", "dirs")
-
-    file_list = []
-    for file_path in glob.glob(os.path.join(target_dir, "*/*.py")):
-        file_list.append(file_path.removeprefix(target_dir + os.sep))
-
-    try:
-        files = "\n".join(file_list)
-        return f"All Python files in the target directory:\n{files}"
-    except Exception as e:
-        return f"Error listing files: {str(e)}"
+    return "No files found."
 
 @mcp.tool()
 def read_file(file_path: str) -> str:
